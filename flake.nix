@@ -36,7 +36,16 @@
 
       installPhase = "mv usr $out";
 
-      meta = {
+      meta = with pkgs.lib; {
+        sourceProvenance = with sourceTypes; [
+          binaryNativeCode
+        ];
+
+        description = "media app thingy";
+
+        license = licenses.mit;
+
+        platforms = platforms.linux;
         mainProgram = "tauri-media-player";
       };
     };
